@@ -1,5 +1,3 @@
-
-
 ;; Packages
 
 ;; Added by Package.el.  This must come before configurations of
@@ -11,8 +9,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-(unless (package-installed-p 'projectile)
-  (package-install 'projectile))
 
 ;; Change cursor type available(hbox, box, bar)
 (setq-default cursor-type 'bar)
@@ -52,15 +48,13 @@
 
 
 ;; FONTS
-(set-face-attribute 'default nil :font "Roboto Slab Bold")
+(set-face-attribute 'default nil :font "SourceCodePro SemiBold")
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  )
-
 
 ;; Disable tool-bar/Menu-bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+
+;; Show line numbers
+(global-linum-mode t)
