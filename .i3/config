@@ -1,9 +1,7 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Note to self: I marked important/useful commands with '<3'
 
-# ------------------- STARTUP ------------------------------------------------------ #
-# WARNING: 10second 'waiting cursor' on startup
-exec "setxkbmap -layout de"
 
 # -------------------------------------------------------------------------------------- #
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -32,6 +30,13 @@ bindsym $mod+n border normal
 font xft:URWGothic-Book 11
 #font pango : Roboto Slab Regular 11
 #font pango : SourceCodePro-SemiBold 11
+
+
+# ------------------- My Custom Commands ---------------------------------------------- #
+# bindsym $keyComb. exec program-name
+bindsym $mod+c exec emacs
+
+
 
 
 # ------------------- MENU ------------------------------------------------------------ #
@@ -68,7 +73,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
+bindsym $mod+F2 exec firefox		# Overwritten by nils - standart = palemoon
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -121,7 +126,7 @@ bindsym $mod+q split toggle
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# change container layout (stacked, tabbed, toggle split)	<3
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -149,13 +154,13 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-# Workspace names
+# Workspace names		<3
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
 set $ws4 4
 set $ws5 5
 set $ws6 6
@@ -238,7 +243,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Set shut down, restart and locking features
+# Set shut down, restart and locking features		<3
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
@@ -255,7 +260,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-# Resize window (you can also use the mouse for that)
+# Resize window (you can also use the mouse for that)		<3
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -282,7 +287,7 @@ mode "resize" {
 # Lock screen
 bindsym $mod+l exec --no-startup-id blurlock
 
-# Autostart applications
+# Autostart applications		<3
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
@@ -329,7 +334,7 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
+# Start i3bar to display a workspace bar (plus the system information i3status if available)		<3
 bar {
 	i3bar_command i3bar
 	status_command i3status
@@ -428,3 +433,8 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+# ------------------- After STARTUP --------------------------- #
+# Placed here to avoid unpleasend startup load.
+exec --no-startup-id "setxkbmap -layout de"
