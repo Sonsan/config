@@ -67,7 +67,7 @@
 ;;----------- Irony-Company configuration ----------------------------------------------------
 (add-hook 'after-init-hook 'global-company-mode)
 ;;(add-hook 'c++-mode-hook 'irony-mode)
-;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 (setq company-idle-delay 0)
 (setq company-minumum-prefix-length 1)	;; Show completions after 1 char aka.: '.'
