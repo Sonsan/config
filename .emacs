@@ -7,11 +7,28 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;;(add-to-list 'package-archives
+;;	     '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+(package-refresh-contents)	;; Update package repo
+
+;; Check for installed packages and install missing ones
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+
+;; Flycheck syntax-error highlighter
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 ;; Change cursor type available(hbox, box, bar)
 (setq-default cursor-type 'bar)
-
 
 ;; Tabs - indent first, completion second
 (defun my-insert-tab-char ()
@@ -21,18 +38,6 @@
 
 (global-set-key (kbd "TAB") 'my-insert-tab-char)
 
-;; backtab
-(global-set-key (kbd "<S-tab>") ' un-ident-by-removing-4-spaces)
-(defun un-ident-by-removing-4-spaces ()
-  "remove 4 spaces from beginning of of line"
-  (interactive)
-  (save-excursion
-    (save-match-data
-      (beginning-of-line)
-      (when (looking-at "^\\s-+")
-	(untabify (match-beginning 0) (match-end 0)))
-      (when (looking-at "^    ")
-	(replace-match "")))))
 	
 ;; THEME
 (custom-set-variables
@@ -43,7 +48,7 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (company-irony irony projectile clojure-mode-extra-font-locking cider haskell-mode))))
+    (flycheck company-irony irony projectile clojure-mode-extra-font-locking cider haskell-mode))))
   
 
 ;; FONTS
