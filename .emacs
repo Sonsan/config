@@ -44,12 +44,16 @@
  '(custom-enabled-themes (quote (misterioso)))
  '(package-selected-packages
    (quote
-    (projectile clojure-mode-extra-font-locking cider haskell-mode))))
-
+    (company-irony irony projectile clojure-mode-extra-font-locking cider haskell-mode))))
+  
 
 ;; FONTS
 (set-face-attribute 'default nil :font "SourceCodePro SemiBold")
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;; Disable tool-bar/Menu-bar
@@ -58,3 +62,17 @@
 
 ;; Show line numbers
 (global-linum-mode t)
+
+
+;;----------- Irony-Company configuration ----------------------------------------------------
+(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'c++-mode-hook 'irony-mode)
+;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(setq company-idle-delay 0)
+(setq company-minumum-prefix-length 1)	;; Show completions after 1 char aka.: '.'
+(setq company-selection-wrap-around t)
+(company-tng-configure-default)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
