@@ -1,7 +1,7 @@
 ;; My Personal emacs ~/.emacs.d/init.el
 ;; Main source: "https://emacswiki.org/"
 
-;; TODO: Split Auto install packages, Editor settings, ... into seperate files.
+;; TODO: Split Auto install packages, Editor settings, ... into separate files.
 
 (package-initialize)
 (require 'package)
