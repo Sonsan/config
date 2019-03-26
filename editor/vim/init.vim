@@ -66,8 +66,7 @@ autocmd FileType tex inoremap ;doc \begin{document}<Enter><Enter>\end{document}
 autocmd FileType tex inoremap ;sec \section{<>}<Enter>\label{sec:Title}<Enter><Enter>
 autocmd FileType tex inoremap ;ssec \subsection{<>}<Enter>\label{sec:Title}<Enter><Enter>
 autocmd FileType tex inoremap ;cen \begin{center}<Enter><Enter>\end{center}
-autocmd FileType tex inoremap ;fig \begin{figure}[h]<Enter>\includegraphics[scale=]{}<Enter>\caption{capt.}<Enter>\label{fig:name}<Enter>\end{figure}
-
+autocmd FileType tex inoremap ;fig \begin{figure}[h]<Enter>\includegraphics[scale=]{example-image}<Enter>\caption{capt.}<Enter>\label{fig:name}<Enter>\end{figure}
 
 " References
 autocmd FileType tex inoremap ;rf \footnote{}<Enter>
@@ -77,5 +76,9 @@ autocmd FileType tex inoremap ;rr \ref{sec/fig/eq:name}
 " Text formatting
 autocmd FileType tex inoremap ;b \textbf{}<Space>(<>)<Esc>
 autocmd FileType tex inoremap ;\np \newpage
+autocmd FileType tex inoremap ;t \textit{}
+autocmd FileType tex inoremap ;q \glqq <Text> \grqq
 
 " Math stuff
+autocmd FileType tex inoremap ;F $\dfrac{k}{\dfrac{k}{\dfrac{k}{1+2+..+n}}}$
+autocmd FileType tex inoremap ;rec \begin{center}<Enter>%start the following with \[ and end it with \]<Enter>f(x)= \begin{cases}<Enter>\frac{1}{2} &, wenn\\<Enter>\frac{1}{3} &, sonst\\<Enter>\end{cases}<Enter>\end{center}<Enter>
