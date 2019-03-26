@@ -21,12 +21,7 @@ execute pathogen#infect()
 	filetype plugin on
 	syntax on
 	set encoding=utf-8
-<<<<<<< HEAD
 	set number relativenumber incsearch
-
-=======
-	set number relativenumber
->>>>>>> 8d8ac0d3c6808b1837ef1f55ca299fb8f66bcc0b
 	" autocomplete
 		set wildmode=longest,list,full
 
