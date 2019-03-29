@@ -162,8 +162,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 
 
 # Open applications on specific workspaces 	<3
-assign [class="Firefox"] $ws1
-assign [class="emacs"] $ws2
+# assign [class="Firefox"] $ws1
+
 
 # Open specific applications in floating mode
 for_window [class="Lightdm-settings"] floating enable
