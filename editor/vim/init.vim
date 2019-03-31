@@ -1,4 +1,6 @@
 let mapleader = "."
+" Packages that sound nice:
+" LaTeX - https://github.com/lervag/vimtex
 
 " Plugged setup
 call plug#begin('~/.vim/plugged')
@@ -11,10 +13,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'ervandew/supertab'
+Plug 'mbbill/undotree'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
-" Pathogen setup - Note to self: I should probably use only one plugin installer
-execute pathogen#infect()
 
 " Some basics
 	set nocompatible
@@ -22,8 +26,13 @@ execute pathogen#infect()
 	syntax on
 	set encoding=utf-8
 	set number relativenumber incsearch
-	" autocomplete
+	" command-autocomplete
 		set wildmode=longest,list,full
+	" tabs
+	set tabstop=3
+	set shiftwidth=3
+	set expandtab
+	set smarttab
 
 " Disable auto block comment
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -54,8 +63,9 @@ let g:haskell_enable_quantification = 1
 	" Open my vim config
 	command Config execute ":edit ~/.config/nvim/init.vim"
 	map <leader>i :Config<CR>
-	" Toggle Nerd Tree
-	map <leader>n :NERDTreeToggle<CR>
+   " Toggle Undo Tree
+   map <leader>ä :UndotreeToggle<CR>
+   " TODO pdflatex compile command
 
 
 " LaTeX Macros
