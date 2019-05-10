@@ -8,6 +8,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
@@ -15,27 +16,41 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'ervandew/supertab'
-Plug 'mbbill/undotree'
 Plug 'vim-syntastic/syntastic'
+Plug 'joshdick/onedark.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'lervag/vimtex'
 call plug#end()
+
 
 
 " Some basics
 	set nocompatible
 	filetype plugin on
-	syntax on
 	set encoding=utf-8
 	set number relativenumber incsearch
-	" command-autocomplete
+
+   " command-autocomplete
 		set wildmode=longest,list,full
-	" tabs
+
+   " tabs
 	set tabstop=3
 	set shiftwidth=3
 	set expandtab
 	set smarttab
 
-" Disable auto block comment
+   " style
+   set t_Co=256
+	syntax on
+   set background=dark
+   colorscheme space-vim-dark
+
+   "copy to os-clipboard
+   set clipboard=unnamed
+
+   " Disable auto block comment
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 
 " Remap Split
 	set splitbelow splitright
@@ -63,32 +78,3 @@ let g:haskell_enable_quantification = 1
 	" Open my vim config
 	command Config execute ":edit ~/.config/nvim/init.vim"
 	map <leader>i :Config<CR>
-   " Toggle Undo Tree
-   map <leader>ä :UndotreeToggle<CR>
-   " TODO pdflatex compile command
-
-
-" LaTeX Macros
-" autocmd FileType `filetype` inoremap `macrokey` `stuff to do/write`
-
-" Basic enviroments
-autocmd FileType tex inoremap ;doc \begin{document}<Enter><Enter>\end{document}
-autocmd FileType tex inoremap ;sec \section{<>}<Enter>\label{sec:Title}<Enter><Enter>
-autocmd FileType tex inoremap ;ssec \subsection{<>}<Enter>\label{sec:Title}<Enter><Enter>
-autocmd FileType tex inoremap ;cen \begin{center}<Enter><Enter>\end{center}
-autocmd FileType tex inoremap ;fig \begin{figure}[h]<Enter>\includegraphics[scale=]{example-image}<Enter>\caption{capt.}<Enter>\label{fig:name}<Enter>\end{figure}
-
-" References
-autocmd FileType tex inoremap ;rf \footnote{}<Enter>
-autocmd FileType tex inoremap ;rh \href{url}{desc.}<Enter>
-autocmd FileType tex inoremap ;rr \ref{sec/fig/eq:name}
-
-" Text formatting
-autocmd FileType tex inoremap ;b \textbf{}<Space>(<>)<Esc>
-autocmd FileType tex inoremap ;\np \newpage
-autocmd FileType tex inoremap ;t \textit{}
-autocmd FileType tex inoremap ;q \glqq <Text> \grqq
-
-" Math stuff
-autocmd FileType tex inoremap ;F $\dfrac{k}{\dfrac{k}{\dfrac{k}{1+2+..+n}}}$
-autocmd FileType tex inoremap ;rec \begin{center}<Enter>%start the following with \[ and end it with \]<Enter>f(x)= \begin{cases}<Enter>\frac{1}{2} &, wenn\\<Enter>\frac{1}{3} &, sonst\\<Enter>\end{cases}<Enter>\end{center}<Enter>
